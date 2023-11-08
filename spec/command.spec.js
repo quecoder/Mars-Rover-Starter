@@ -6,7 +6,19 @@ const Command = require('../command.js');
 describe("Command class", function() {
 
   it("throws error if command type is NOT passed into constructor as the first parameter", function() {
-    expect( function() { new Command();}).toThrow(new Error('Command type required.'));
+    expect(function() { new Command();}).toThrow(new Error('Command type required.'));
+  });
+
+  // HAVE TO INITIALIZE LOCALLY FOR ALL, expect type of command (I set to commandType) to be commandType
+  it('constructor sets command type', function() {
+   let command = new Command ('commandType') 
+    expect(command.commandType).toBe('commandType');
+  });
+
+  // expect the value of command (which i set as value) to be value
+  it('constructor sets a value passed in as the 2nd argument', function() {
+    let command = new Command('commandType', 'value'); 
+    expect(command.value).toBe('value');
   });
 
 });
